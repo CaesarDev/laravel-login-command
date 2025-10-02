@@ -2,9 +2,9 @@
 
 namespace CaesarDev\LaravelLoginCommand\Tests;
 
+use CaesarDev\LaravelLoginCommand\LaravelLoginCommandServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use CaesarDev\LaravelLoginCommand\LaravelLoginCommandServiceProvider;
 
 class TestCase extends Orchestra
 {

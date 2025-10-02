@@ -2,9 +2,9 @@
 
 namespace CaesarDev\LaravelLoginCommand;
 
+use CaesarDev\LaravelLoginCommand\Commands\LaravelLoginCommandCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use CaesarDev\LaravelLoginCommand\Commands\LaravelLoginCommandCommand;
 
 class LaravelLoginCommandServiceProvider extends PackageServiceProvider
 {

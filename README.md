@@ -9,17 +9,10 @@ You can install the package via composer:
 composer require caesardev/laravel-login-command
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-login-command-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-login-command-config"
+php artisan vendor:publish --tag="login-command-config"
 ```
 
 This is the contents of the published config file:

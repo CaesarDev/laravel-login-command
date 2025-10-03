@@ -20,8 +20,6 @@ class LaravelLoginCommandServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-login-command')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_login_command_table')
             ->hasCommand(LaravelLoginCommandCommand::class);
     }
 

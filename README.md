@@ -1,19 +1,5 @@
 # A Laravel command to login as a user
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/caesardev/laravel-login-command.svg?style=flat-square)](https://packagist.org/packages/caesardev/laravel-login-command)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/caesardev/laravel-login-command/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/caesardev/laravel-login-command/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/caesardev/laravel-login-command/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/caesardev/laravel-login-command/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/caesardev/laravel-login-command.svg?style=flat-square)](https://packagist.org/packages/caesardev/laravel-login-command)
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-login-command.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-login-command)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+A Laravel package that generates secure, signed login links for authenticating users via the command line. Perfect for development, testing, or providing customer support access.
 
 ## Installation
 
@@ -40,6 +26,15 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'expiration' => 60,
+
+    'guard' => null,
+
+    'redirect_url' => '/',
+
+    'route_name' => 'login-link',
+
+    'user_model' => 'App\\Models\\User',
 ];
 ```
 
@@ -51,10 +46,44 @@ php artisan vendor:publish --tag="laravel-login-command-views"
 
 ## Usage
 
-```php
-$laravelLoginCommand = new CaesarDev\LaravelLoginCommand();
-echo $laravelLoginCommand->echoPhrase('Hello, CaesarDev!');
+Generate a signed login link for a user by their ID:
+
+```bash
+php artisan login:link 1
 ```
+
+Or by their email:
+
+```bash
+php artisan login:link user@example.com
+```
+
+The command will output a signed URL that you can copy and paste into your browser to authenticate as that user.
+
+### Options
+
+**--guard**: Specify the authentication guard to use
+```bash
+php artisan login:link 1 --guard=admin
+```
+
+**--redirect**: Specify where to redirect after login
+```bash
+php artisan login:link 1 --redirect=/dashboard
+```
+
+**--expires**: Set how many minutes the link remains valid (default: 60)
+```bash
+php artisan login:link 1 --expires=120
+```
+
+### Configuration
+
+- **expiration**: Default number of minutes the login link is valid (default: 60)
+- **guard**: Default authentication guard to use (default: null, uses default guard)
+- **redirect_url**: Default URL to redirect to after login (default: '/')
+- **route_name**: Name of the login route (default: 'login-link')
+- **user_model**: The User model class to use (default: 'App\\Models\\User')
 
 ## Testing
 

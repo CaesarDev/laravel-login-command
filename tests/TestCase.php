@@ -27,17 +27,9 @@ class TestCase extends Orchestra
 
     protected function tearDown(): void
     {
-        if (
-            method_exists(\Illuminate\Foundation\Bootstrap\HandleExceptions::class, 'flushHandlersState') &&
-            $this->app
-        ) {
-            try {
-                \Illuminate\Foundation\Bootstrap\HandleExceptions::flushHandlersState($this);
-            } catch (\Throwable $e) {
-            }
-        }
-        
         parent::tearDown();
+
+        restore_exception_handler();
     }
 
     protected function getPackageProviders($app)

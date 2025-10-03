@@ -31,12 +31,6 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-login-command-views"
-```
-
 ## Usage
 
 Generate a signed login link for a user by their ID:

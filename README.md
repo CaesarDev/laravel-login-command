@@ -51,7 +51,7 @@ Or by their email:
 php artisan login:link user@example.com
 ```
 
-The command will output a signed URL that you can copy and paste into your browser to authenticate as that user.
+The command will output a signed URL that you can click or copy and paste into your browser to authenticate as that user.
 
 ### Options
 
